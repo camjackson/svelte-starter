@@ -5,8 +5,16 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
+import postcss from 'rollup-plugin-postcss';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 const production = !process.env.ROLLUP_WATCH;
+
+if (production) {
+  // Needed for purge.css to work
+  process.env.NODE_ENV = 'production';
+}
 
 export default {
   input: 'src/main.ts',
@@ -26,6 +34,11 @@ export default {
         css.write('public/build/bundle.css');
       },
       preprocess: sveltePreprocess(),
+    }),
+
+    postcss({
+      extract: 'tailwind.css',
+      plugins: [tailwindcss, autoprefixer],
     }),
 
     // If you have external dependencies installed from
