@@ -5,15 +5,23 @@
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public",
+    "test": "jest --watch",
     "validate": "svelte-check"
   },
   "devDependencies": {
+    "@babel/core": "^7.10.5",
+    "@babel/preset-env": "^7.10.4",
     "@rollup/plugin-commonjs": "^12.0.0",
     "@rollup/plugin-node-resolve": "^8.0.0",
     "@rollup/plugin-typescript": "^4.0.0",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/svelte": "^3.0.0",
     "@tsconfig/svelte": "^1.0.0",
+    "@types/jest": "^26.0.7",
     "autoprefixer": "^9.8.5",
+    "babel-jest": "^26.1.0",
     "husky": ">=4",
+    "jest": "^26.1.0",
     "lint-staged": ">=10",
     "prettier": "^2.0.5",
     "prettier-plugin-svelte": "^1.1.0",
@@ -24,6 +32,7 @@
     "rollup-plugin-terser": "^5.1.2",
     "svelte": "^3.0.0",
     "svelte-check": "^0.1.0",
+    "svelte-jester": "^1.0.6",
     "svelte-preprocess": "^4.0.0",
     "tailwindcss": "^1.5.2",
     "tslib": "^2.0.0",
@@ -39,5 +48,36 @@
   },
   "lint-staged": {
     "*.{js,css,md,svelte}": "prettier --write"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.svelte$": [
+        "svelte-jester",
+        {
+          "preprocess": true
+        }
+      ],
+      "^.+\\.ts$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "svelte"
+    ],
+    "setupFilesAfterEnv": [
+      "./src/setupTests.ts"
+    ]
   }
 }

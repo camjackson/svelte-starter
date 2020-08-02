@@ -1,3 +1,5 @@
-singleQuote: true
-trailingComma: all
-svelteStrictMode: true
+{
+  "singleQuote": true,
+  "trailingComma": "all",
+  "svelteStrictMode": true
+}
