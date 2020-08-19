@@ -4,10 +4,8 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "lint": "eslint src --ext .js,.ts",
     "start": "sirv public",
-    "test": "jest --watch",
-    "validate": "svelte-check"
+    "test": "jest --watch"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^15.0.0",
@@ -47,7 +45,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && svelte-check"
     }
   },
   "lint-staged": {
