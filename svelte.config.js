@@ -1,3 +1,4 @@
+/* eslint-disable */
 const sveltePreprocess = require('svelte-preprocess');
 
 module.exports = {
