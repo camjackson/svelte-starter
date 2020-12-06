@@ -2,6 +2,12 @@
   export let name: string;
 </script>
 
+<style>
+  p {
+    color: green;
+  }
+</style>
+
 <main>
   <h1 class="text-red-600">Hello {name}!</h1>
   <p>
