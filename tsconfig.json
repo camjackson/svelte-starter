@@ -4,6 +4,6 @@
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"],
   "compilerOptions": {
     "esModuleInterop": true,
-    "types": ["node", "jest"]
+    "types": ["jest"]
   }
 }
